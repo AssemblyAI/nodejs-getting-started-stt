@@ -1,7 +1,6 @@
 require('dotenv').config();
 const fetch = require("node-fetch");
 
-const apiKey = process.env.ASSEMBLYAI_API_KEY;
 const url = "https://api.assemblyai.com/v2/transcript";
 
 let args = process.argv.slice(2);
@@ -12,7 +11,7 @@ const data = {
 
 const params = {
   headers: {
-    "authorization": apiKey,
+    "authorization": process.env.ASSEMBLYAI_API_KEY,
     "content-type": "application/json",
   },
   body: JSON.stringify(data),
