@@ -1,5 +1,5 @@
 require('dotenv').config();
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
 
 let args = process.argv.slice(2);
 let id = args[0];
@@ -10,11 +10,11 @@ const params = {
     "authorization": process.env.ASSEMBLYAI_API_KEY,
     "content-type": "application/json",
   },
-  method: "GET"
+  method: 'GET'
 };
 
 
-function getTranscription(data) {
+function print(data) {
   switch (data.status) {
     case 'queued':
     case 'processing':
@@ -33,7 +33,7 @@ function getTranscription(data) {
 fetch(url, params)
   .then(response => response.json())
   .then(data => {
-    getTranscription(data);
+    print(data);
   })
   .catch((error) => {
     console.error(`Error: ${error}`);
